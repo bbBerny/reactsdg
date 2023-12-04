@@ -6,7 +6,6 @@ import Interactivemap from "./Interactivemap";
 function Map() {
     return (
         <div>
-            <Navbar/>
             <Interactivemap/>
             <Footer/>
         </div>

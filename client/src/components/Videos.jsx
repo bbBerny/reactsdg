@@ -7,11 +7,8 @@ function Videos() {
                 <div className="row row-cols-2">
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="texto-videos">
-                        <h3><strong>Para cuidar el ambiente, la conciencia no alcanza | Sergio Federovisky | TEDxCordoba
-                        </strong></h3> Un experto en medio ambiente nos desafía a cuestionar nuestra noción de progreso. A pesar de la
-                        conciencia ambiental, los problemas empeoran. El enfoque tradicional en el crecimiento económico y la
-                        explotación de recursos ya no funciona. Descubre cómo podemos tomar medidas colectivas para un futuro
-                        sostenible.
+                        <h3><strong>To care for the environment, awareness is not enough | Sergio Federovisky | TEDxCordoba
+                        </strong></h3> An environmental expert challenges us to question our notion of progress. Despite environmental awareness, problems are worsening. The traditional focus on economic growth and resource exploitation no longer works. Discover how we can take collective action for a sustainable future.
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="videos">
@@ -22,26 +19,15 @@ function Videos() {
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="texto-videos">
-                        <h3><strong>La importancia de cuidar el medio ambiente</strong></h3> Adéntrate en el urgente discurso sobre el
-                        medio ambiente. Este video te sumergirá en un viaje crítico por la conservación de nuestro planeta. Descubre los
-                        desafíos del cambio climático, la protección de la biodiversidad y las soluciones sostenibles. Únete al
-                        movimiento global para preservar el lugar que llamamos hogar. ¡Es hora de tomar medidas por un futuro verde y
-                        saludable!
+                        <h3><strong> Climate Change: How does it really work? | ClimateScience #1 </strong></h3> Delve into the urgent discourse on the environment. This video will immerse you in a critical journey through the conservation of our planet. Discover the challenges of climate change, biodiversity protection, and sustainable solutions. Join the global movement to preserve the place we call home. It's time to take action for a green and healthy future!
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="videos">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/UEkh47qyk6k?si=ZkLldZqROPLzKxI6"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/myZAvqqp9Jc?si=EavZHqNVQxUyOgkh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="texto-videos">
-                        <h3><strong>¿Qué es la acción climática?</strong></h3> Este mensaje destaca la importancia de la acción
-                        individual en la lucha contra el cambio climático. Aunque los gobiernos y las empresas tienen un papel vital,
-                        cada persona puede marcar la diferencia. Se anima a tomar medidas como comprar de manera responsable, usar
-                        medios de transporte sostenibles y votar por políticas climáticas. La clave es convertir la acción individual en
-                        acción colectiva para combatir el cambio climático.
+                        <h3><strong>What is climate action?</strong></h3>This message emphasizes the importance of individual action in the fight against climate change. While governments and businesses play a crucial role, each person can make a difference. Taking actions such as responsible purchasing, using sustainable transportation, and voting for climate policies is encouraged. The key is turning individual action into collective action to combat climate change.
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="videos">
@@ -51,12 +37,7 @@ function Videos() {
                             allowfullscreen></iframe>
                     </div>
                     <div className="col-lg-4 offset-lg-1 mt-5" id="texto-videos">
-                        <h3><strong>¿Cómo estructurar un proyecto de acción climática?</strong></h3> Este video presenta una guía
-                        esencial para estructurar proyectos de acción climática. Destaca la importancia de crear planes de negocios
-                        listos para la implementación, enfocados en la mitigación y adaptación al cambio climático. Se resalta la
-                        necesidad de considerar criterios financieros y sostenibles al formular estos proyectos. Además, se explora la
-                        identificación de riesgos y la documentación detallada del proyecto. Esta guía es invaluable para cualquier
-                        iniciativa ambiental.
+                        <h3><strong>How to structure a climate action project?</strong></h3>This video presents an essential guide for structuring climate action projects. It emphasizes the importance of creating implementation-ready business plans focused on both mitigating and adapting to climate change. The need to consider financial and sustainable criteria in formulating these projects is highlighted. Additionally, it explores risk identification and detailed project documentation. This guide is invaluable for any environmental initiative.
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="videos">
@@ -67,11 +48,7 @@ function Videos() {
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="texto-videos">
-                        <h3><strong>Cambio Climático | Lo que haces cuenta | National Geographic</strong></h3>Este video reflexiona
-                        sobre cómo solemos pensar que otros resolverán los problemas ambientales. Destaca la importancia de asumir la
-                        responsabilidad individual y colectiva en acciones ambientales, como el reciclaje y el compromiso con políticas
-                        ambientales. La crisis actual nos recuerda que nuestras acciones importan y que debemos ser agentes activos del
-                        cambio ambiental positivo.
+                        <h3><strong>Climate Change | What You Do Matters | National Geographic</strong></h3>This video reflects on how we often expect others to solve environmental problems. It emphasizes the importance of taking individual and collective responsibility in environmental actions, such as recycling and commitment to environmental policies. The current crisis reminds us that our actions matter, and we must be active agents of positive environmental change .
                     </div>
 
                     <div className="col-lg-4 offset-lg-1 mt-5" id="videos">
