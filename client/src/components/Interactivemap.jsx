@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import '../Interactivemap.css';
 
-const Interactivemap = () => {
+function Interactivemap() {
   useEffect(() => {
     // Load the Google Maps script after the component has mounted
     const script = document.createElement("script");
-    script.src = "https://maps.googleapis.com/maps/api/js";
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCDO1L_b8Vq-T4tDw1R5NXzS5_i4MnJic8';
     script.async = true;
     document.body.appendChild(script);
 
@@ -19,6 +19,7 @@ const Interactivemap = () => {
 
       const waqiMapOverlay = new window.google.maps.ImageMapType({
         getTileUrl: function (coord, zoom) {
+          console.log(coord.y);
           return `https://tiles.aqicn.org/tiles/usepa-aqi/${zoom}/${coord.x}/${coord.y}.png?token=9d0b1d77f7d908275085f9a57d2c59e41582a969`;
         },
         name: "Air Quality",
@@ -27,7 +28,6 @@ const Interactivemap = () => {
       map.overlayMapTypes.insertAt(0, waqiMapOverlay);
     };
   }, []); // Empty dependency array ensures the effect runs once after the initial render
-
   return (
     <div>
       <div className="card">
@@ -57,7 +57,7 @@ const Interactivemap = () => {
       </div>
       <br />
     </div>
-  );
-};
+  )
+}
 
 export default Interactivemap;
