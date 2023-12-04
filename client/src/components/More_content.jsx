@@ -6,7 +6,6 @@ import Videos from "./Videos";
 function More_content(){
     return (
         <div>
-            <Navbar/>
             <Videos/>
             <Footer/>
         </div>

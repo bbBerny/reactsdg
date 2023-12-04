@@ -1,5 +1,7 @@
 import React from "react";
 import LOGO from '../img/LOGO.png'
+import { Link } from 'react-router-dom';
+
 
 function Navbar() {
     return (
@@ -14,17 +16,17 @@ function Navbar() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/index">HOME</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/map">MAP</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/more_content">MORE</a>
-                            </li>
-                        </ul>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link to="/" className="nav-link active" aria-current="page">HOME</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/map" className="nav-link active" aria-current="page">MAP</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/more_content" className="nav-link active" aria-current="page">MORE</Link>
+                        </li>
+                    </ul>
                         <form action="/search" method="get" className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" />
                             <button className="btn btn-outline-success" type="submit">Search</button>
