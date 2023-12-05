@@ -1,69 +1,67 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-app.use(express.static("public"));
-import axios from 'axios';
 
 const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
 
 
 const user = process.env.DB_USER;
 const password = process.env.DB_PASS;
-const mongoUrl = `mongodb+srv://${user}:${password}@cluster0.vmafkex.mongodb.net/project?retryWrites=true&w=majority`;
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }); 
+const mongoUrl = `mongodb+srv://${user}:${password}@cluster0.vmafkex.mongodb.net/users?retryWrites=true&w=majority`;
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
+const userSchema = new mongoose.Schema({
+    email: String,
+    password: String,
+});
+userSchema.set("strictQuery", true)
+const User = mongoose.model("User", userSchema)
 
-// Función para manejar el registro
-async function handleRegister() {
-    // Obtén los valores del formulario
-    const user = document.querySelector('#registerUser').value;
-    const password = document.querySelector('#registerPassword').value;
-  
-    // Haz la solicitud POST
-    const response = await fetch('/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ user, password })
-    });
-  
-    // Maneja la respuesta
-    if (response.ok) {
-      console.log('Usuario registrado exitosamente');
-    } else {
-      console.error('Error al registrar el usuario');
+app.get('/users', async (req, res) => {
+    try {
+        const users = await User.find({});
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
-  }
-  
-  // Función para manejar el inicio de sesión
-  async function handleLogin() {
-    // Obtén los valores del formulario
-    const user = document.querySelector('#loginUser').value;
-    const password = document.querySelector('#loginPassword').value;
-  
-    // Haz la solicitud POST
-    const response = await fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ user, password })
+});
+
+app.route("/")
+    .get((req, res) => {
+        res.render("index");
+    })
+    .post((req, res) => {
+        res.redirect("/");
+    })
+
+app.route("/Map")
+    .post(async (req, res) => {
+        const { username, email } = req.body.user;
+        // Check if the username or email already exists
+        const userExists = await User.findOne({ $or: [{ email }, { password }] }).exec();
+
+        if (userExists) {
+            // If user exists, send a conflict status code
+            res.status(409).json({ message: "Username or email already registered." });
+        } else {
+            // If user does not exist, create a new user
+            const newUser = new User({
+                email: req.body.user.name,
+                password: req.body.user.password,
+            });
+            await newUser.save();
+            res.status(201).json(newUser);
+        }
     });
-  
-    // Maneja la respuesta
-    if (response.ok) {
-      console.log('Inicio de sesión exitoso');
-    } else {
-      console.error('Error al iniciar sesión');
-    }
-  }
-  
 
 
 
-app.listen(5000, ()=>{
+
+app.listen(5000, () => {
     console.log("istening to port 5000");
-    });
+});
