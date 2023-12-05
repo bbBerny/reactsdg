@@ -1,0 +1,62 @@
+/*Here starts the styling for the navbar*/
+*{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbar {
+    background-color: rgb(20, 108, 148);
+  }
+
+
+.nav-link.active, .navbar-brand{
+    color: rgb(246, 241, 241);
+}
+
+.img-fluid{
+    height: 40px;
+    width: 40px;
+}
+
+.navbar-toggler-icon{
+    background-image: url('../src/img/dropdown.svg');
+}
+
+.btn-outline-success{
+    color: rgb(246, 241, 241);
+    border-color: rgb(246, 241, 241);
+}
+/*Here ends the styling for the navbar*/
+
+
+#videos {
+    float: center;
+    /*margin-left: 100px;*/
+    
+    margin-top: 80px;
+    width: 500px; /* Ancho del contenedor */
+    height: 300px; /* Alto del contenedor */
+}
+
+#videos iframe {
+    width: 100%; /* Ancho del iframe al 100% del contenedor */
+    height: 100%; /* Alto del iframe al 100% del contenedor */
+}
+
+#texto-videos{
+    text-align: justify;
+    margin-bottom: 50px;
+    
+}
+
+@media screen and (max-width:1200px) {
+    #texto-videos{
+        width: 90%;
+    }
+
+    #videos {
+        width: 90%;
+    }
+}   
+
+
+
