@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.72d7b3e0.css",
+    "main.js": "/static/js/main.f10030c4.js",
+    "static/js/787.d5fa4d18.chunk.js": "/static/js/787.d5fa4d18.chunk.js",
+    "static/media/FirstSlideCarousel.svg": "/static/media/FirstSlideCarousel.b954409863f93ea2a5185730f2385e8b.svg",
+    "static/media/SecondSlideCarousel.svg": "/static/media/SecondSlideCarousel.0c16d75f331489fb57f9de77f87d005b.svg",
+    "static/media/ThirdSlideCarousel.svg": "/static/media/ThirdSlideCarousel.db247f13afb81697f3dbc6e4b6bfa9b5.svg",
+    "static/media/LOGO.png": "/static/media/LOGO.ea3c5c1861968275b104.png",
+    "static/media/ClimateChange(FourthSlide).jpg": "/static/media/ClimateChange(FourthSlide).0a98e3a61a36509567ae.jpg",
+    "static/media/AirpulltionMap-secondCard.jpg": "/static/media/AirpulltionMap-secondCard.9d552ddc33bf477b68f1.jpg",
+    "static/media/UN.png": "/static/media/UN.a5c0e3e0c4e1d6a93980.png",
+    "index.html": "/index.html",
+    "static/media/dropdown.svg": "/static/media/dropdown.c6d9f675acddc0d35248.svg",
+    "main.72d7b3e0.css.map": "/static/css/main.72d7b3e0.css.map",
+    "main.f10030c4.js.map": "/static/js/main.f10030c4.js.map",
+    "787.d5fa4d18.chunk.js.map": "/static/js/787.d5fa4d18.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.72d7b3e0.css",
+    "static/js/main.f10030c4.js"
+  ]
+}

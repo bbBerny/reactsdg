@@ -1,6 +1,47 @@
 import React from "react";
 import Navbar from './Navbar';
 
+const [userProfile, setUserProfile] = useState({
+    user: "",
+    password: "",
+})
+
+function fieldListener(event) {   //Method for the onchnge in the input
+    const { value, name } = event.target;
+    setUserProfile((prevValue) => {
+        return {
+            ...prevValue,
+            [name]: value,
+        };
+
+    });
+    console.log(userProfile)
+}
+
+
+function submitForm(event) {
+    console.log("User: " + userProfile.user);
+    console.log("Password: " + userProfile.password);
+    axios.post("/Login", { //The second paramether of the axios is the content of the form that will be unpacked on the backend
+        user: userProfile.user,
+        password: userProfile.password
+
+    }).then((res) => { //promise method
+        //console.log(res.data);
+        if (res.data.statusCode === 1) {
+            console.log("Ypure logged In");
+            props.listener();
+        }
+
+    }
+    ).catch((err) => {
+        console.log(err)
+    })
+
+
+    event.preventDefault();
+
+}
 
 function Signin() {
     return (
@@ -50,7 +91,7 @@ function Signin() {
                                         fdprocessedid="tk4xqm" />
                                     <label for="floatingInput">Email address</label>
                                 </div>
-                                <div class="form-floating" style={{marginBottom: "5%"}}>
+                                <div class="form-floating" style={{ marginBottom: "5%" }}>
                                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
                                         fdprocessedid="fzuem" />
                                     <label for="floatingPassword">Password</label>

@@ -1,18 +1,26 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const axios = require('axios');
 
 const app = express();
+
+var reactViews = require('express-react-views');
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jsx');
+app.engine('jsx', reactViews.createEngine());
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-
+console.log("HELLOOOO");
 
 const user = process.env.DB_USER;
 const password = process.env.DB_PASS;
-const mongoUrl = `mongodb+srv://${user}:${password}@cluster0.vmafkex.mongodb.net/users?retryWrites=true&w=majority`;
+const mongoUrl = `mongodb+srv://0253018:5GjE2lGFkLpI3hUF@cluster0.vmafkex.mongodb.net/users?retryWrites=true&w=majority`;
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const userSchema = new mongoose.Schema({
@@ -21,6 +29,22 @@ const userSchema = new mongoose.Schema({
 });
 userSchema.set("strictQuery", true)
 const User = mongoose.model("User", userSchema)
+
+var apiPath = "";
+
+if (process.env.NODE_ENV === "production") {
+
+    apiPath = "/api";
+
+}
+
+axios.post(apiPath + "/Signin", {
+
+    user: userProfile.user,
+
+    pass: userProfile.password,
+
+})
 
 app.get('/users', async (req, res) => {
     try {
@@ -33,7 +57,7 @@ app.get('/users', async (req, res) => {
 
 app.route("/")
     .get((req, res) => {
-        res.render("index");
+        res.render("App");
     })
     .post((req, res) => {
         res.redirect("/");
@@ -61,7 +85,10 @@ app.route("/Map")
 
 
 
+const PORT = process.env.PORT || 5000;
 
-app.listen(5000, () => {
-    console.log("istening to port 5000");
+app.listen(PORT, () => {
+
+    console.log("Listening to port " + PORT);
+
 });
