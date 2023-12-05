@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const axios = require('axios');
 
 const app = express();
 
@@ -29,22 +28,6 @@ const userSchema = new mongoose.Schema({
 });
 userSchema.set("strictQuery", true)
 const User = mongoose.model("User", userSchema)
-
-var apiPath = "";
-
-if (process.env.NODE_ENV === "production") {
-
-    apiPath = "/api";
-
-}
-
-axios.post(apiPath + "/Signin", {
-
-    user: userProfile.user,
-
-    pass: userProfile.password,
-
-})
 
 app.get('/users', async (req, res) => {
     try {

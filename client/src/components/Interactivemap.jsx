@@ -1,7 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 import '../Interactivemap.css';
 
 function Interactivemap() {
+
+  /*
+  const [flag, setFlag] = useState({
+    flag: true
+  })
+
   useEffect(() => {
     // Load the Google Maps script after the component has mounted
     const script = document.createElement("script");
@@ -10,6 +17,7 @@ function Interactivemap() {
     document.body.appendChild(script);
 
     script.onload = () => {
+      window.alert(5);
       // Once the script has loaded, create the Google Maps instance
       const map = new window.google.maps.Map(document.getElementById("map"), {
         center: new window.google.maps.LatLng(51.505, -0.09),
@@ -26,13 +34,20 @@ function Interactivemap() {
       });
 
       map.overlayMapTypes.insertAt(0, waqiMapOverlay);
+
     };
-  }, []); // Empty dependency array ensures the effect runs once after the initial render
+
+
+  },); // Empty dependency array ensures the effect runs once after the initial render*/
+
+
   return (
     <div>
-      <div className="card">
+
+      {/* 
+     <div className="card">
         <h5 className="card-header text-center">
-          <b>Mapa Interactivo de Contaminacion Actual</b>
+          <b>Interactive Map</b>
         </h5>
         <div className="card-body">
           <div className="container text-center">
@@ -55,6 +70,8 @@ function Interactivemap() {
           </div>
         </div>
       </div>
+*/}
+
       <br />
     </div>
   )
