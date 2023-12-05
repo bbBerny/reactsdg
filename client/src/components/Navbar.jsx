@@ -15,22 +15,19 @@ function Navbar() {
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                    <div className="collapse navbar-collapse d-flex" id="navbarSupportedContent" style={{alignItems:"center"}}>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li className="nav-item">
-                            <Link to="/" className="nav-link active" aria-current="page">HOME</Link>
+                            <Link to="/" className="nav-link active" aria-current="page" style={{marginRight:"1dvw"}}>HOME</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/map" className="nav-link active" aria-current="page">MAP</Link>
+                            <Link to="/map" className="nav-link active" aria-current="page" style={{marginRight:"1dvw"}}>MAP</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/more_content" className="nav-link active" aria-current="page">MORE</Link>
                         </li>
                     </ul>
-                        <form action="/search" method="get" className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+
                     </div>
                 </div>
             </nav>
