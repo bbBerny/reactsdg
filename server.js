@@ -14,53 +14,55 @@ const password = process.env.DB_PASS;
 const mongoUrl = `mongodb+srv://${user}:${password}@cluster0.vmafkex.mongodb.net/project?retryWrites=true&w=majority`;
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true }); 
 
-const userSchema = new mongoose.Schema({
-    user: String,
-    password: String,
-  });
-  userSchema.set("strictQuery", true); //Mandoatory Line
 
-
+// Función para manejar el registro
 async function handleRegister() {
-  const user = document.querySelector('#registerUser').value;
-  const password = document.querySelector('#registerPassword').value;
-
-  const response = await axios.post('/Map', { user, password });
-
-  console.log(response.data);
-}
-
-async function handleLogin() {
-  const user = document.querySelector('#loginUser').value;
-  const password = document.querySelector('#loginPassword').value;
-
-  const response = await axios.post('/Map', { user, password });
-
-  console.log(response.data);
-}
-
-
-
-app.post("/Login",(req, res)=>{
-    var user = req.body.user;
-    var password =  req.body.password;
-    //You would conect to DB or a 3th party API to authentication your user
-    let authorization = {
-        user: user,
-        status: "Unauthorized",
-        statusCode: -1,
-    }
-    
-    if (user=="David" && password=="1234"){
-        console.log("Login")
-        authorization.status = "Authorized";
-        authorization.statusCode = 1;
-    }else{
-        console.log("No access")
-    }
-    res.json(authorization);
-    
+    // Obtén los valores del formulario
+    const user = document.querySelector('#registerUser').value;
+    const password = document.querySelector('#registerPassword').value;
+  
+    // Haz la solicitud POST
+    const response = await fetch('/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ user, password })
     });
+  
+    // Maneja la respuesta
+    if (response.ok) {
+      console.log('Usuario registrado exitosamente');
+    } else {
+      console.error('Error al registrar el usuario');
+    }
+  }
+  
+  // Función para manejar el inicio de sesión
+  async function handleLogin() {
+    // Obtén los valores del formulario
+    const user = document.querySelector('#loginUser').value;
+    const password = document.querySelector('#loginPassword').value;
+  
+    // Haz la solicitud POST
+    const response = await fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ user, password })
+    });
+  
+    // Maneja la respuesta
+    if (response.ok) {
+      console.log('Inicio de sesión exitoso');
+    } else {
+      console.error('Error al iniciar sesión');
+    }
+  }
+  
+
+
 
 app.listen(5000, ()=>{
     console.log("istening to port 5000");
