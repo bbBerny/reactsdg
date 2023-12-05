@@ -46,20 +46,22 @@ app.route("/")
         res.redirect("/");
     })
 
+
 app.route("/Map")
     .post(async (req, res) => {
-        const { username, email } = req.body.user;
+        const { email, password } = req.body.logInForm;
         // Check if the username or email already exists
         const userExists = await User.findOne({ $or: [{ email }, { password }] }).exec();
 
         if (userExists) {
             // If user exists, send a conflict status code
             res.status(409).json({ message: "Username or email already registered." });
+            console.log("Registered");
         } else {
             // If user does not exist, create a new user
             const newUser = new User({
-                email: req.body.user.name,
-                password: req.body.user.password,
+                email: email,
+                password: password,
             });
             await newUser.save();
             res.status(201).json(newUser);
