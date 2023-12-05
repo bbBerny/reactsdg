@@ -2,25 +2,13 @@ import React from "react";
 import Navbar from './Navbar';
 
 const [userProfile, setUserProfile] = useState({
-    user: "",
+    email: "",
     password: "",
 })
 
-function fieldListener(event) {   //Method for the onchnge in the input
-    const { value, name } = event.target;
-    setUserProfile((prevValue) => {
-        return {
-            ...prevValue,
-            [name]: value,
-        };
-
-    });
-    console.log(userProfile)
-}
-
 
 function submitForm(event) {
-    console.log("User: " + userProfile.user);
+    console.log("User email: " + userProfile.email);
     console.log("Password: " + userProfile.password);
     axios.post("/Login", { //The second paramether of the axios is the content of the form that will be unpacked on the backend
         user: userProfile.user,
@@ -29,7 +17,7 @@ function submitForm(event) {
     }).then((res) => { //promise method
         //console.log(res.data);
         if (res.data.statusCode === 1) {
-            console.log("Ypure logged In");
+            console.log("Youre logged In");
             props.listener();
         }
 
@@ -38,9 +26,7 @@ function submitForm(event) {
         console.log(err)
     })
 
-
     event.preventDefault();
-
 }
 
 function Signin() {
@@ -51,7 +37,7 @@ function Signin() {
                 <div class="card-body">
 
 
-                    <form>
+                    <form onSubmit={submitForm}>
                         <h1 class="h3 mb-3 fw-normal">Please Login</h1>
 
                         <div class="form-floating">
