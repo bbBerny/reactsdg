@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import Mapaimagen from "./Mapaimagen";
+import { useHistory } from 'react-router-dom';
 
 
 function Signin() {
+    const history = useHistory();
+
+
     const [signUpForm, setSignUpForm] = useState({
         email: "",
         password: "",
@@ -29,6 +34,10 @@ function Signin() {
             } else if (res.status === 409) {
                 console.log("Username or email already registered.");
                 // Handle conflict (username or email already exists)
+            } else if (res.status === 200) {
+                console.log("Autenticado en el FRONTEND");
+                history.push('/InteractiveMap');
+
             }
         }).catch((err) => {
             console.log(err);
@@ -36,6 +45,10 @@ function Signin() {
 
         event.preventDefault();
     }
+
+
+  
+
 
 
 
@@ -78,7 +91,7 @@ function Signin() {
                         </div>
                         <div className="modal-body">
 
-                            <form>
+                            <form onSubmit={submitForm}>
                                 <h1 className="h3 mb-3 fw-normal" style={{ textAlign: "center" }}><b>Sign In to Continue</b></h1>
 
                                 <div className="form-floating">
@@ -103,6 +116,7 @@ function Signin() {
 
 
         </div>
+
     )
 }
 

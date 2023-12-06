@@ -56,18 +56,25 @@ app.route("/Map")
 
         // Check if the username or email already exists
         const userExists = await User.findOne({ email }).exec();
+        console.log(userExists.email);
+        console.log(userExists.password);
+
 
         if (userExists) {
             // If user exists, send a conflict status code
-            res.status(409).json({ message: "Username or email already registered." });
+            //res.status(409).json({ message: "Username or email already registered." });
             console.log("Registered");
 
-            if (userExists.comparePassword && await userExists.comparePassword(password)) {
+            if (userExists.password == password ) {
                 // Passwords match, authentication successful
                 res.status(200).json({ message: "Authentication successful" });
+                //console.log(res.status());
+                console.log("Autenticado BackEnd");
             } else {
                 // Passwords do not match, send an unauthorized status code
                 res.status(401).json({ message: "Authentication failed. Incorrect password." });
+                console.log("No autenticado");
+
             }
         } else {
             // If user does not exist, create a new user
