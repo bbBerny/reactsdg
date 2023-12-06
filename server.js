@@ -29,6 +29,12 @@ const userSchema = new mongoose.Schema({
 userSchema.set("strictQuery", true)
 const User = mongoose.model("User", userSchema)
 
+const bcrypt = require('bcrypt');
+
+userSchema.methods.comparePassword = async function(candidatePassword) {
+    return await bcrypt.compare(candidatePassword, this.password);
+};
+
 app.get('/users', async (req, res) => {
     try {
         const users = await User.find({});
@@ -57,6 +63,17 @@ app.route("/Map")
             // If user exists, send a conflict status code
             res.status(409).json({ message: "Username or email already registered." });
             console.log("Registered");
+
+            const isPasswordValid = await user.comparePassword(password);
+
+            if (isPasswordValid) {
+                // Passwords match, authentication successful
+                res.status(200).json({ message: "Authentication successful" });
+            } else {
+                // Passwords do not match, send an unauthorized status code
+                res.status(401).json({ message: "Authentication failed. Incorrect password." });
+            }
+
         } else {
             // If user does not exist, create a new user
             const newUser = new User({
