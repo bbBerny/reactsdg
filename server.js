@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const bcrypt = require('bcrypt'); 
 
 const app = express();
 
@@ -17,8 +18,6 @@ app.use(express.static("public"));
 
 console.log("HELLOOOO");
 
-const user = process.env.DB_USER;
-const password = process.env.DB_PASS;
 const mongoUrl = `mongodb+srv://0253018:5GjE2lGFkLpI3hUF@cluster0.vmafkex.mongodb.net/users?retryWrites=true&w=majority`;
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -27,9 +26,7 @@ const userSchema = new mongoose.Schema({
     password: String,
 });
 userSchema.set("strictQuery", true)
-const User = mongoose.model("User", userSchema)
-
-const bcrypt = require('bcrypt');
+const User = mongoose.model("User", userSchema);
 
 userSchema.methods.comparePassword = async function(candidatePassword) {
     return await bcrypt.compare(candidatePassword, this.password);
@@ -56,24 +53,22 @@ app.route("/")
 app.route("/Map")
     .post(async (req, res) => {
         const { email, password } = req.body.logInForm;
+
         // Check if the username or email already exists
-        const userExists = await User.findOne({ $or: [{ email }, { password }] }).exec();
+        const userExists = await User.findOne({ email }).exec();
 
         if (userExists) {
             // If user exists, send a conflict status code
             res.status(409).json({ message: "Username or email already registered." });
             console.log("Registered");
 
-            const isPasswordValid = await user.comparePassword(password);
-
-            if (isPasswordValid) {
+            if (userExists.comparePassword && await userExists.comparePassword(password)) {
                 // Passwords match, authentication successful
                 res.status(200).json({ message: "Authentication successful" });
             } else {
                 // Passwords do not match, send an unauthorized status code
                 res.status(401).json({ message: "Authentication failed. Incorrect password." });
             }
-
         } else {
             // If user does not exist, create a new user
             const newUser = new User({
@@ -82,8 +77,10 @@ app.route("/Map")
             });
             await newUser.save();
             res.status(201).json(newUser);
+            console.log("New user created ------------------------------------");
         }
     });
+
 
 
 
